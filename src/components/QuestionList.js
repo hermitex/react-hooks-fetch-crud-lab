@@ -15,12 +15,20 @@ function QuestionList() {
     setQuestions(newQuestions);
   }
 
+  function updatedAnswer(updatedQuestion){
+    let newQuestions = questions.map(question =>{
+      if(question.id === updatedQuestion.id) return updatedQuestion;
+      return question;
+    })
+    setQuestions(newQuestions);
+  }
+
   return (
     <section>
       <h1>Quiz Questions</h1>
       <ul>
         {questions.map((question) => (
-          <QuestionItem key={question.id} question={question} onDeleteQuestion={onDeleteQuestion} />
+          <QuestionItem key={question.id} question={question} onDeleteQuestion={onDeleteQuestion} updatedAnswer={updatedAnswer}/>
         ))}
       </ul>
     </section>
